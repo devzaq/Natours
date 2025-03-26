@@ -8,9 +8,9 @@ const factory = require('./handlerFactory');
 (async () => {
   try {
     await Tour.syncIndexes();
-    console.log('Indexes synced successfully!');
+    // console.log('Indexes synced successfully!');
   } catch (err) {
-    console.error('Error syncing indexes:', err);
+    // console.error('Error syncing indexes:', err);
   }
 })();
 
@@ -129,7 +129,7 @@ exports.getTourWithin = catchAsync(async (req, res, next) => {
         400,
       ),
     );
-  console.log({ lng, lat, radius });
+  // console.log({ lng, lat, radius });
   const tours = await Tour.find({
     startLocation: {
       $geoWithin: {
@@ -138,7 +138,7 @@ exports.getTourWithin = catchAsync(async (req, res, next) => {
     },
   });
 
-  console.log('Tours found:', tours);
+  // console.log('Tours found:', tours);
 
   res.status(200).json({
     status: 'success',

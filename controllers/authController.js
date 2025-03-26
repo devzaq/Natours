@@ -24,7 +24,7 @@ const createSendToken = (user, statusCode, res) => {
   if (process.env.NODE_ENV === 'production') cookieOptions.secure = true;
 
   res.cookie('jwt', token, cookieOptions);
-  console.log('Sent Cookies: ', res.getHeaders()['set-cookie']);
+  // console.log('Sent Cookies: ', res.getHeaders()['set-cookie']);
 
   // Remove password from output
   user.password = undefined;
@@ -153,7 +153,7 @@ exports.isLoggedIn = async (req, res, next) => {
       res.locals.user = currentUser;
     }
   } catch (e) {
-    console.log('Logged Out!');
+    // console.log('Logged Out!');
   } finally {
     next();
   }

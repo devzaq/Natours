@@ -7709,7 +7709,7 @@ const login = async (email, password)=>{
     try {
         const res = await (0, _axiosDefault.default)({
             method: 'POST',
-            url: 'http://127.0.0.1:3000/api/v1/users/login',
+            url: '/api/v1/users/login',
             data: {
                 email,
                 password
@@ -7732,7 +7732,7 @@ const logout = async ()=>{
     try {
         const res = await (0, _axiosDefault.default)({
             method: 'GET',
-            url: 'http://127.0.0.1:3000/api/v1/users/logout'
+            url: '/api/v1/users/logout'
         });
         if (res.data.status === 'success') location.reload(true);
     } catch (error) {
@@ -12602,7 +12602,7 @@ const updateSettings = async (data, type)=>{
     try {
         const res = await (0, _axiosDefault.default)({
             method: 'PATCH',
-            url: `http://127.0.0.1:3000/api/v1/users/${type === 'password' ? 'updateMyPassword' : 'updateMe'}`,
+            url: `/api/v1/users/${type === 'password' ? 'updateMyPassword' : 'updateMe'}`,
             data,
             withCredentials: true
         }, {
@@ -12625,14 +12625,14 @@ const stripe = Stripe('pk_test_51R6DglBbphT2o3hlEbU8w4po88MoQmMOOpem9dhDIGD6uqP1
 const bookTour = async (tourId)=>{
     try {
         //1) GET CHECKOUT SESSION WITH API
-        const session = await (0, _axiosDefault.default)(`http://127.0.0.1:3000/api/v1/bookings/checkout-session/${tourId}`);
-        console.log(session);
+        const session = await (0, _axiosDefault.default)(`/api/v1/bookings/checkout-session/${tourId}`);
+        // console.log(session);
         //2) CREATE CHECKOUT FORM AND CHARGE CREDIT CARD
         await stripe.redirectToCheckout({
             sessionId: session.data.session.id
         });
     } catch (error) {
-        console.log(error);
+        // console.log(error);
         (0, _alerts.showAlert)('error', 'Something went wrong');
     }
 };

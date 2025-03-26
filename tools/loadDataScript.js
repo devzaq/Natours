@@ -21,7 +21,7 @@ const updateTours = async () => {
       );
     }
     const data = await response.json();
-    console.log('Tours:', data);
+    // console.log('Tours:', data);
   } catch (error) {
     console.error('Error:', error.message);
   }
@@ -58,7 +58,7 @@ const deleteAllTours = async () => {
         );
       }
       const data = await response.json();
-      console.log('Tours:', data);
+      // console.log('Tours:', data);
     } catch (error) {
       console.error('Error:', error.message);
     }
